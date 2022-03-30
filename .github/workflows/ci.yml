@@ -5,6 +5,9 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./src
 
     services:
       postgres:
@@ -55,7 +58,6 @@ jobs:
           echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
           sudo locale-gen en_AU.UTF-8
           echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
-        working-directory: ./src
 
       - name: Install moodle-plugin-ci
         run: |
@@ -63,46 +65,37 @@ jobs:
         env:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodle-branch }}
-        working-directory: ./src
 
       - name: PHP Lint
         if: ${{ always() }}
         run: moodle-plugin-ci phplint
-        working-directory: ./src
 
       - name: PHP Copy/Paste Detector
         continue-on-error: true # This step will show errors but will not fail
         if: ${{ always() }}
         run: moodle-plugin-ci phpcpd
-        working-directory: ./src
 
       - name: PHP Mess Detector
         continue-on-error: true # This step will show errors but will not fail
         if: ${{ always() }}
         run: moodle-plugin-ci phpmd
-        working-directory: ./src
 
       - name: Moodle Code Checker
         if: ${{ always() }}
         run: moodle-plugin-ci codechecker --max-warnings 0
-        working-directory: ./src
 
       - name: Moodle PHPDoc Checker
         if: ${{ always() }}
         run: moodle-plugin-ci phpdoc
-        working-directory: ./src
 
       - name: Validating
         if: ${{ always() }}
         run: moodle-plugin-ci validate
-        working-directory: ./src
 
       - name: Check upgrade savepoints
         if: ${{ always() }}
         run: moodle-plugin-ci savepoints
-        working-directory: ./src
 
       - name: PHPUnit tests
         if: ${{ always() }}
         run: moodle-plugin-ci phpunit
-        working-directory: ./src
