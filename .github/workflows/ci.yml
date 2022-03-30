@@ -5,9 +5,6 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-18.04
-    defaults:
-      run:
-        working-directory: ../src
 
     services:
       postgres:
@@ -53,6 +50,7 @@ jobs:
 
       - name: Initialise moodle-plugin-ci
         run: |
+          mv src/* .
           composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^3
           echo $(cd ci/bin; pwd) >> $GITHUB_PATH
           echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
