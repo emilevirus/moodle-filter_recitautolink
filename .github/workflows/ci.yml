@@ -47,7 +47,6 @@ jobs:
           extensions: ${{ matrix.extensions }}
           ini-values: max_input_vars=5000
           coverage: none
-        working-directory: ./src
 
       - name: Initialise moodle-plugin-ci
         run: |
