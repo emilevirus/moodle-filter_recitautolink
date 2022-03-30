@@ -50,8 +50,8 @@ jobs:
 
       - name: Initialise moodle-plugin-ci
         run: |
-          ls
-          mv src/* .
+          ls plugin
+          mv plugin/src/* plugin/
           composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^3
           echo $(cd ci/bin; pwd) >> $GITHUB_PATH
           echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
