@@ -290,7 +290,7 @@ class filter_recitactivity extends moodle_text_filter {
     /**
      * This function gets course module name
      *
-     * @param object $mod
+     * @param cm_info $mod
      * @param array $option
      */
     protected function get_cm_name(cm_info $mod, $options = array()) {
@@ -577,7 +577,7 @@ class filter_recitactivity extends moodle_text_filter {
     /**
      * Generate cm completion checkbox
      *
-     * @param object $mod
+     * @param cm_info $mod
      * @param object $completiondata
      */
     public function course_section_cm_completion(cm_info $mod, $completiondata) {
@@ -707,7 +707,7 @@ class filter_recitactivity extends moodle_text_filter {
     /**
      * Render pix icon
      *
-     * @param object $icon
+     * @param pix_icon $icon
      */
     protected function renderPixIcon(pix_icon $icon) {
         global $OUTPUT;
