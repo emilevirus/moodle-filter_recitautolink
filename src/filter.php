@@ -290,8 +290,8 @@ class filter_recitactivity extends moodle_text_filter {
     /**
      * This function gets course module name
      *
-     * @param stdClass $mod
-     * @param array $option
+     * @param cm_info $mod
+     * @param array $options
      */
     protected function get_cm_name(cm_info $mod, $options = array()) {
         $output = '';
