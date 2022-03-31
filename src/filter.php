@@ -290,7 +290,7 @@ class filter_recitactivity extends moodle_text_filter {
     /**
      * This function gets course module name
      *
-     * @param cm_info $mod
+     * @param stdClass $mod
      * @param array $option
      */
     protected function get_cm_name(cm_info $mod, $options = array()) {
@@ -559,7 +559,7 @@ class filter_recitactivity extends moodle_text_filter {
     /**
      * Search H5P in context
      *
-     * @param string $name
+     * @param string $search
      * @param int $contextid
      */
     public function get_h5p_search_contents($search, $contextid) {

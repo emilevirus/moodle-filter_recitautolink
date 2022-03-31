@@ -82,7 +82,7 @@ class filter_recitactivity_dao {
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
 class filter_recitactivity_dao_factory{
-    /* @var Object $instance store dao instance */
+    /** @var stdClass $instance store dao instance */
     private static $instance;
 
      /**
